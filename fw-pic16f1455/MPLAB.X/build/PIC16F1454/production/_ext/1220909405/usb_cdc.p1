@@ -1,0 +1,489 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"257 ../m-stack/usb/include/usb_cdc.h
+[; ;../m-stack/usb/include/usb_cdc.h: 257: struct cdc_line_coding {
+[s S25 `ul 1 `uc 1 `uc 1 `uc 1 ]
+[n S25 cdc_line_coding dwDTERate bCharFormat bParityType bDataBits ]
+"70 ../m-stack/usb/src/usb_cdc.c
+[; ;../m-stack/usb/src/usb_cdc.c: 70: static union transfer_data {
+[u S26 `us 1 `S25 1 ]
+[n S26 transfer_data comm_feature line_coding ]
+"94
+[; ;../m-stack/usb/src/usb_cdc.c: 94:  if (set_or_clear_request == CDC_SET_COMM_FEATURE) {
+[c E416 0 1 2 3 4 32 33 34 35 .. ]
+[n E416 CDCRequests CDC_SEND_ENCAPSULATED_COMMAND CDC_GET_ENCAPSULATED_RESPONSE CDC_SET_COMM_FEATURE CDC_GET_COMM_FEATURE CDC_CLEAR_COMM_FEATURE CDC_SET_LINE_CODING CDC_GET_LINE_CODING CDC_SET_CONTROL_LINE_STATE CDC_SEND_BREAK  ]
+"368 ../m-stack/usb/include/usb_cdc.h
+[; ;../m-stack/usb/include/usb_cdc.h: 368: extern int8_t app_set_comm_feature_callback(uint8_t interface,
+[v _app_set_comm_feature_callback `(c ~T0 @X0 0 ef3`uc`a`a ]
+"392
+[; ;../m-stack/usb/include/usb_cdc.h: 392: extern int8_t app_clear_comm_feature_callback(uint8_t interface,
+[v _app_clear_comm_feature_callback `(c ~T0 @X0 0 ef3`uc`a`a ]
+"435
+[; ;../m-stack/usb/include/usb_cdc.h: 435: extern int8_t app_set_line_coding_callback(uint8_t interface,
+[v _app_set_line_coding_callback `(c ~T0 @X0 0 ef2`uc`*CS25 ]
+"171 ../m-stack/usb/include/usb_ch9.h
+[; ;../m-stack/usb/include/usb_ch9.h: 171:   struct {
+[s S3 :5 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S3 . destination type direction ]
+"170
+[; ;../m-stack/usb/include/usb_ch9.h: 170:  union {
+[u S2 `S3 1 `uc 1 ]
+[n S2 . . bmRequestType ]
+"169
+[; ;../m-stack/usb/include/usb_ch9.h: 169: struct setup_packet {
+[s S1 `S2 1 `uc 1 `us 1 `us 1 `us 1 ]
+[n S1 setup_packet REQUEST bRequest wValue wIndex wLength ]
+"311 ../m-stack/usb/include/usb_cdc.h
+[; ;../m-stack/usb/include/usb_cdc.h: 311: extern int8_t app_send_encapsulated_command(uint8_t interface,
+[v _app_send_encapsulated_command `(c ~T0 @X0 0 ef2`uc`us ]
+[v F562 `(c ~T0 @X0 0 tf2`a`*v ]
+[v F499 `(c ~T0 @X0 0 tf2`a`*v ]
+"343
+[; ;../m-stack/usb/include/usb_cdc.h: 343: extern int16_t app_get_encapsulated_response(uint8_t interface,
+[v _app_get_encapsulated_response `(s ~T0 @X0 0 ef5`uc`us`**Cv`**F499`**v ]
+[v F394 `(c ~T0 @X0 0 tf2`a`*v ]
+"610 ../m-stack/usb/include/usb.h
+[; ;../m-stack/usb/include/usb.h: 610: void usb_send_data_stage(char *buffer, size_t len,
+[v _usb_send_data_stage `(v ~T0 @X0 0 ef4`*uc`ui`*F394`*v ]
+"175 ../m-stack/usb/src/usb_cdc.c
+[; ;../m-stack/usb/src/usb_cdc.c: 175:   if (setup->wValue != CDC_FEATURE_ABSTRACT_STATE)
+[c E426 1 2 .. ]
+[n E426 CDCCommFeatureSelector CDC_FEATURE_ABSTRACT_STATE CDC_FEATURE_COUNTRY_SETTING  ]
+[v F383 `(c ~T0 @X0 0 tf2`a`*v ]
+"581 ../m-stack/usb/include/usb.h
+[; ;../m-stack/usb/include/usb.h: 581: void usb_start_receive_ep0_data_stage(char *buffer, size_t len,
+[v _usb_start_receive_ep0_data_stage `(v ~T0 @X0 0 ef4`*uc`ui`*F383`*v ]
+"413 ../m-stack/usb/include/usb_cdc.h
+[; ;../m-stack/usb/include/usb_cdc.h: 413: extern int8_t app_get_comm_feature_callback(
+[v _app_get_comm_feature_callback `(c ~T0 @X0 0 ef3`uc`*a`*a ]
+[v F578 `(c ~T0 @X0 0 tf2`a`*v ]
+"461
+[; ;../m-stack/usb/include/usb_cdc.h: 461: extern int8_t app_get_line_coding_callback(uint8_t interface,
+[v _app_get_line_coding_callback `(c ~T0 @X0 0 ef2`uc`*S25 ]
+[v F585 `(c ~T0 @X0 0 tf2`a`*v ]
+"480
+[; ;../m-stack/usb/include/usb_cdc.h: 480: extern int8_t app_set_control_line_state_callback(uint8_t interface,
+[v _app_set_control_line_state_callback `(c ~T0 @X0 0 ef3`uc`a`a ]
+[v F591 `(c ~T0 @X0 0 tf2`a`*v ]
+"498
+[; ;../m-stack/usb/include/usb_cdc.h: 498: extern int8_t app_send_break_callback(uint8_t interface, uint16_t duration);
+[v _app_send_break_callback `(c ~T0 @X0 0 ef2`uc`us ]
+[v F595 `(c ~T0 @X0 0 tf2`a`*v ]
+"69 ../m-stack/usb/src/usb_cdc.c
+[; ;../m-stack/usb/src/usb_cdc.c: 69: static uint8_t transfer_interface;
+[v _transfer_interface `uc ~T0 @X0 1 s ]
+"80
+[; ;../m-stack/usb/src/usb_cdc.c: 80: } transfer_data;
+[v _transfer_data `S26 ~T0 @X0 1 s ]
+"83
+[; ;../m-stack/usb/src/usb_cdc.c: 83: static uint8_t set_or_clear_request;
+[v _set_or_clear_request `uc ~T0 @X0 1 s ]
+"84
+[; ;../m-stack/usb/src/usb_cdc.c: 84: static int8_t set_or_clear_comm_feature_callback(_Bool transfer_ok, void *context)
+[v _set_or_clear_comm_feature_callback `(c ~T0 @X0 1 sf2`a`*v ]
+"85
+[; ;../m-stack/usb/src/usb_cdc.c: 85: {
+{
+[e :U _set_or_clear_comm_feature_callback ]
+"84
+[; ;../m-stack/usb/src/usb_cdc.c: 84: static int8_t set_or_clear_comm_feature_callback(_Bool transfer_ok, void *context)
+[v _transfer_ok `a ~T0 @X0 1 r1 ]
+[v _context `*v ~T0 @X0 1 r2 ]
+"85
+[; ;../m-stack/usb/src/usb_cdc.c: 85: {
+[f ]
+"88
+[; ;../m-stack/usb/src/usb_cdc.c: 88:  if (!transfer_ok)
+[e $ ! ! != -> _transfer_ok `i -> 0 `i 28  ]
+"89
+[; ;../m-stack/usb/src/usb_cdc.c: 89:   return -1;
+[e ) -> -U -> 1 `i `c ]
+[e $UE 27  ]
+[e :U 28 ]
+"91
+[; ;../m-stack/usb/src/usb_cdc.c: 91:  _Bool idle_setting = (transfer_data.comm_feature & 1) != 0;
+[v _idle_setting `a ~T0 @X0 1 a ]
+[e = _idle_setting -> -> != & -> . _transfer_data 0 `ui -> -> 1 `i `ui -> -> 0 `i `ui `i `a ]
+"92
+[; ;../m-stack/usb/src/usb_cdc.c: 92:  _Bool data_multiplexed_state = (transfer_data.comm_feature & 2) != 0;
+[v _data_multiplexed_state `a ~T0 @X0 1 a ]
+[e = _data_multiplexed_state -> -> != & -> . _transfer_data 0 `ui -> -> 2 `i `ui -> -> 0 `i `ui `i `a ]
+"94
+[; ;../m-stack/usb/src/usb_cdc.c: 94:  if (set_or_clear_request == CDC_SET_COMM_FEATURE) {
+[e $ ! == -> _set_or_clear_request `i -> . `E416 2 `i 29  ]
+{
+"95
+[; ;../m-stack/usb/src/usb_cdc.c: 95:   return app_set_comm_feature_callback(transfer_interface,
+[e ) ( _app_set_comm_feature_callback (3 , , _transfer_interface _idle_setting _data_multiplexed_state ]
+[e $UE 27  ]
+"98
+[; ;../m-stack/usb/src/usb_cdc.c: 98:  }
+}
+[e $U 30  ]
+"99
+[; ;../m-stack/usb/src/usb_cdc.c: 99:  else {
+[e :U 29 ]
+{
+"101
+[; ;../m-stack/usb/src/usb_cdc.c: 101:   return app_clear_comm_feature_callback(transfer_interface,
+[e ) ( _app_clear_comm_feature_callback (3 , , _transfer_interface _idle_setting _data_multiplexed_state ]
+[e $UE 27  ]
+"104
+[; ;../m-stack/usb/src/usb_cdc.c: 104:  }
+}
+[e :U 30 ]
+"105
+[; ;../m-stack/usb/src/usb_cdc.c: 105:  return 0;
+[e ) -> -> 0 `i `c ]
+[e $UE 27  ]
+"106
+[; ;../m-stack/usb/src/usb_cdc.c: 106: }
+[e :UE 27 ]
+}
+"110
+[; ;../m-stack/usb/src/usb_cdc.c: 110: static int8_t set_line_coding(_Bool transfer_ok, void *context) {
+[v _set_line_coding `(c ~T0 @X0 1 sf2`a`*v ]
+{
+[e :U _set_line_coding ]
+[v _transfer_ok `a ~T0 @X0 1 r1 ]
+[v _context `*v ~T0 @X0 1 r2 ]
+[f ]
+"111
+[; ;../m-stack/usb/src/usb_cdc.c: 111:  if (!transfer_ok)
+[e $ ! ! != -> _transfer_ok `i -> 0 `i 32  ]
+"112
+[; ;../m-stack/usb/src/usb_cdc.c: 112:   return -1;
+[e ) -> -U -> 1 `i `c ]
+[e $UE 31  ]
+[e :U 32 ]
+"114
+[; ;../m-stack/usb/src/usb_cdc.c: 114:  return app_set_line_coding_callback(transfer_interface,
+[e ) ( _app_set_line_coding_callback (2 , _transfer_interface -> &U . _transfer_data 1 `*CS25 ]
+[e $UE 31  ]
+"116
+[; ;../m-stack/usb/src/usb_cdc.c: 116: }
+[e :UE 31 ]
+}
+"120
+[; ;../m-stack/usb/src/usb_cdc.c: 120: uint8_t process_cdc_setup_request(const struct setup_packet *setup)
+[v _process_cdc_setup_request `(uc ~T0 @X0 1 ef1`*CS1 ]
+"121
+[; ;../m-stack/usb/src/usb_cdc.c: 121: {
+{
+[e :U _process_cdc_setup_request ]
+"120
+[; ;../m-stack/usb/src/usb_cdc.c: 120: uint8_t process_cdc_setup_request(const struct setup_packet *setup)
+[v _setup `*CS1 ~T0 @X0 1 r1 ]
+"121
+[; ;../m-stack/usb/src/usb_cdc.c: 121: {
+[f ]
+"124
+[; ;../m-stack/usb/src/usb_cdc.c: 124:  uint8_t interface = setup->wIndex;
+[v _interface `uc ~T0 @X0 1 a ]
+[e = _interface -> . *U _setup 3 `uc ]
+"136
+[; ;../m-stack/usb/src/usb_cdc.c: 136:  if (setup->bRequest == CDC_SEND_ENCAPSULATED_COMMAND &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 0 `i == -> . . *U _setup 0 1 `i -> 33 `i 34  ]
+"137
+[; ;../m-stack/usb/src/usb_cdc.c: 137:      setup->REQUEST.bmRequestType == 0x21) {
+{
+"138
+[; ;../m-stack/usb/src/usb_cdc.c: 138:   int8_t res;
+[v _res `c ~T0 @X0 1 a ]
+"139
+[; ;../m-stack/usb/src/usb_cdc.c: 139:   res = app_send_encapsulated_command(interface,
+[e = _res ( _app_send_encapsulated_command (2 , _interface . *U _setup 4 ]
+"141
+[; ;../m-stack/usb/src/usb_cdc.c: 141:   if (res < 0)
+[e $ ! < -> _res `i -> 0 `i 35  ]
+"142
+[; ;../m-stack/usb/src/usb_cdc.c: 142:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 35 ]
+"143
+[; ;../m-stack/usb/src/usb_cdc.c: 143:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"144
+[; ;../m-stack/usb/src/usb_cdc.c: 144:  }
+}
+[e :U 34 ]
+"148
+[; ;../m-stack/usb/src/usb_cdc.c: 148:  if (setup->bRequest == CDC_GET_ENCAPSULATED_RESPONSE &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 1 `i == -> . . *U _setup 0 1 `i -> 161 `i 36  ]
+"149
+[; ;../m-stack/usb/src/usb_cdc.c: 149:      setup->REQUEST.bmRequestType == 0xa1) {
+{
+"150
+[; ;../m-stack/usb/src/usb_cdc.c: 150:   const void *response;
+[v _response `*Cv ~T0 @X0 1 a ]
+"151
+[; ;../m-stack/usb/src/usb_cdc.c: 151:   int16_t len;
+[v _len `s ~T0 @X0 1 a ]
+"152
+[; ;../m-stack/usb/src/usb_cdc.c: 152:   usb_ep0_data_stage_callback callback;
+[v _callback `*F562 ~T0 @X0 1 a ]
+"153
+[; ;../m-stack/usb/src/usb_cdc.c: 153:   void *context;
+[v _context `*v ~T0 @X0 1 a ]
+"155
+[; ;../m-stack/usb/src/usb_cdc.c: 155:   len = app_get_encapsulated_response(
+[e = _len ( _app_get_encapsulated_response (4 , , , , _interface . *U _setup 4 &U _response &U _callback &U _context ]
+"159
+[; ;../m-stack/usb/src/usb_cdc.c: 159:   if (len < 0)
+[e $ ! < -> _len `i -> 0 `i 37  ]
+"160
+[; ;../m-stack/usb/src/usb_cdc.c: 160:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 37 ]
+"162
+[; ;../m-stack/usb/src/usb_cdc.c: 162:   usb_send_data_stage((void*)response,
+[e ( _usb_send_data_stage (4 , , , -> -> _response `*v `*uc ? < -> _len `ui -> . *U _setup 4 `ui : -> _len `ui -> . *U _setup 4 `ui _callback _context ]
+"165
+[; ;../m-stack/usb/src/usb_cdc.c: 165:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"166
+[; ;../m-stack/usb/src/usb_cdc.c: 166:  }
+}
+[e :U 36 ]
+"170
+[; ;../m-stack/usb/src/usb_cdc.c: 170:  if (setup->bRequest == CDC_SET_COMM_FEATURE &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 2 `i == -> . . *U _setup 0 1 `i -> 33 `i 38  ]
+"171
+[; ;../m-stack/usb/src/usb_cdc.c: 171:      setup->REQUEST.bmRequestType == 0x21) {
+{
+"175
+[; ;../m-stack/usb/src/usb_cdc.c: 175:   if (setup->wValue != CDC_FEATURE_ABSTRACT_STATE)
+[e $ ! != -> . *U _setup 2 `ui -> . `E426 0 `ui 39  ]
+"176
+[; ;../m-stack/usb/src/usb_cdc.c: 176:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 39 ]
+"178
+[; ;../m-stack/usb/src/usb_cdc.c: 178:   transfer_interface = interface;
+[e = _transfer_interface _interface ]
+"179
+[; ;../m-stack/usb/src/usb_cdc.c: 179:   set_or_clear_request = setup->bRequest;
+[e = _set_or_clear_request . *U _setup 1 ]
+"180
+[; ;../m-stack/usb/src/usb_cdc.c: 180:   usb_start_receive_ep0_data_stage((char*) &transfer_data.comm_feature,
+[e ( _usb_start_receive_ep0_data_stage (4 , , , -> &U . _transfer_data 0 `*uc -> # . _transfer_data 0 `ui &U _set_or_clear_comm_feature_callback -> -> 0 `i `*v ]
+"184
+[; ;../m-stack/usb/src/usb_cdc.c: 184:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"185
+[; ;../m-stack/usb/src/usb_cdc.c: 185:  }
+}
+[e :U 38 ]
+"189
+[; ;../m-stack/usb/src/usb_cdc.c: 189:  if (setup->bRequest == CDC_CLEAR_COMM_FEATURE &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 4 `i == -> . . *U _setup 0 1 `i -> 33 `i 40  ]
+"190
+[; ;../m-stack/usb/src/usb_cdc.c: 190:      setup->REQUEST.bmRequestType == 0x21) {
+{
+"194
+[; ;../m-stack/usb/src/usb_cdc.c: 194:   if (setup->wValue != CDC_FEATURE_ABSTRACT_STATE)
+[e $ ! != -> . *U _setup 2 `ui -> . `E426 0 `ui 41  ]
+"195
+[; ;../m-stack/usb/src/usb_cdc.c: 195:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 41 ]
+"197
+[; ;../m-stack/usb/src/usb_cdc.c: 197:   transfer_interface = interface;
+[e = _transfer_interface _interface ]
+"198
+[; ;../m-stack/usb/src/usb_cdc.c: 198:   set_or_clear_request = setup->bRequest;
+[e = _set_or_clear_request . *U _setup 1 ]
+"199
+[; ;../m-stack/usb/src/usb_cdc.c: 199:   usb_start_receive_ep0_data_stage((char*)&transfer_data.comm_feature,
+[e ( _usb_start_receive_ep0_data_stage (4 , , , -> &U . _transfer_data 0 `*uc -> # . _transfer_data 0 `ui &U _set_or_clear_comm_feature_callback -> -> 0 `i `*v ]
+"203
+[; ;../m-stack/usb/src/usb_cdc.c: 203:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"204
+[; ;../m-stack/usb/src/usb_cdc.c: 204:  }
+}
+[e :U 40 ]
+"208
+[; ;../m-stack/usb/src/usb_cdc.c: 208:  if (setup->bRequest == CDC_GET_COMM_FEATURE &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 3 `i == -> . . *U _setup 0 1 `i -> 161 `i 42  ]
+"209
+[; ;../m-stack/usb/src/usb_cdc.c: 209:      setup->REQUEST.bmRequestType == 0xa1) {
+{
+"210
+[; ;../m-stack/usb/src/usb_cdc.c: 210:   _Bool idle_setting;
+[v _idle_setting `a ~T0 @X0 1 a ]
+"211
+[; ;../m-stack/usb/src/usb_cdc.c: 211:   _Bool data_multiplexed_state;
+[v _data_multiplexed_state `a ~T0 @X0 1 a ]
+"212
+[; ;../m-stack/usb/src/usb_cdc.c: 212:   int8_t res;
+[v _res `c ~T0 @X0 1 a ]
+"216
+[; ;../m-stack/usb/src/usb_cdc.c: 216:   if (setup->wValue != CDC_FEATURE_ABSTRACT_STATE)
+[e $ ! != -> . *U _setup 2 `ui -> . `E426 0 `ui 43  ]
+"217
+[; ;../m-stack/usb/src/usb_cdc.c: 217:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 43 ]
+"219
+[; ;../m-stack/usb/src/usb_cdc.c: 219:   res = app_get_comm_feature_callback(
+[e = _res ( _app_get_comm_feature_callback (3 , , _interface &U _idle_setting &U _data_multiplexed_state ]
+"223
+[; ;../m-stack/usb/src/usb_cdc.c: 223:   if (res < 0)
+[e $ ! < -> _res `i -> 0 `i 44  ]
+"224
+[; ;../m-stack/usb/src/usb_cdc.c: 224:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 44 ]
+"226
+[; ;../m-stack/usb/src/usb_cdc.c: 226:   transfer_data.comm_feature =
+[e = . _transfer_data 0 -> | -> -> _idle_setting `us `ui << -> -> _data_multiplexed_state `us `ui -> 1 `i `us ]
+"230
+[; ;../m-stack/usb/src/usb_cdc.c: 230:   usb_send_data_stage((char*)&transfer_data.comm_feature,
+[e ( _usb_send_data_stage (4 , , , -> &U . _transfer_data 0 `*uc ? < -> . *U _setup 4 `ui -> # . _transfer_data 0 `ui : -> . *U _setup 4 `ui -> # . _transfer_data 0 `ui -> -> -> 0 `i `*v `*F578 -> -> 0 `i `*v ]
+"234
+[; ;../m-stack/usb/src/usb_cdc.c: 234:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"235
+[; ;../m-stack/usb/src/usb_cdc.c: 235:  }
+}
+[e :U 42 ]
+"239
+[; ;../m-stack/usb/src/usb_cdc.c: 239:  if (setup->bRequest == CDC_SET_LINE_CODING &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 5 `i == -> . . *U _setup 0 1 `i -> 33 `i 45  ]
+"240
+[; ;../m-stack/usb/src/usb_cdc.c: 240:      setup->REQUEST.bmRequestType == 0x21) {
+{
+"242
+[; ;../m-stack/usb/src/usb_cdc.c: 242:   transfer_interface = interface;
+[e = _transfer_interface _interface ]
+"243
+[; ;../m-stack/usb/src/usb_cdc.c: 243:   usb_start_receive_ep0_data_stage(
+[e ( _usb_start_receive_ep0_data_stage (4 , , , -> &U . _transfer_data 1 `*uc ? < -> . *U _setup 4 `ui -> # . _transfer_data 1 `ui : -> . *U _setup 4 `ui -> # . _transfer_data 1 `ui &U _set_line_coding -> -> 0 `i `*v ]
+"248
+[; ;../m-stack/usb/src/usb_cdc.c: 248:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"249
+[; ;../m-stack/usb/src/usb_cdc.c: 249:  }
+}
+[e :U 45 ]
+"253
+[; ;../m-stack/usb/src/usb_cdc.c: 253:  if (setup->bRequest == CDC_GET_LINE_CODING &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 6 `i == -> . . *U _setup 0 1 `i -> 161 `i 46  ]
+"254
+[; ;../m-stack/usb/src/usb_cdc.c: 254:      setup->REQUEST.bmRequestType == 0xa1) {
+{
+"255
+[; ;../m-stack/usb/src/usb_cdc.c: 255:   int8_t res;
+[v _res `c ~T0 @X0 1 a ]
+"257
+[; ;../m-stack/usb/src/usb_cdc.c: 257:   res = app_get_line_coding_callback(
+[e = _res ( _app_get_line_coding_callback (2 , _interface &U . _transfer_data 1 ]
+"260
+[; ;../m-stack/usb/src/usb_cdc.c: 260:   if (res < 0)
+[e $ ! < -> _res `i -> 0 `i 47  ]
+"261
+[; ;../m-stack/usb/src/usb_cdc.c: 261:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 47 ]
+"263
+[; ;../m-stack/usb/src/usb_cdc.c: 263:   usb_send_data_stage((char*)&transfer_data.line_coding,
+[e ( _usb_send_data_stage (4 , , , -> &U . _transfer_data 1 `*uc ? < -> . *U _setup 4 `ui -> # . _transfer_data 1 `ui : -> . *U _setup 4 `ui -> # . _transfer_data 1 `ui -> -> -> 0 `i `*v `*F585 -> -> 0 `i `*v ]
+"267
+[; ;../m-stack/usb/src/usb_cdc.c: 267:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"268
+[; ;../m-stack/usb/src/usb_cdc.c: 268:  }
+}
+[e :U 46 ]
+"272
+[; ;../m-stack/usb/src/usb_cdc.c: 272:  if (setup->bRequest == CDC_SET_CONTROL_LINE_STATE &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 7 `i == -> . . *U _setup 0 1 `i -> 33 `i 48  ]
+"273
+[; ;../m-stack/usb/src/usb_cdc.c: 273:      setup->REQUEST.bmRequestType == 0x21) {
+{
+"274
+[; ;../m-stack/usb/src/usb_cdc.c: 274:   int8_t res;
+[v _res `c ~T0 @X0 1 a ]
+"275
+[; ;../m-stack/usb/src/usb_cdc.c: 275:   _Bool dtr = (setup->wValue & 0x1) != 0;
+[v _dtr `a ~T0 @X0 1 a ]
+[e = _dtr -> -> != & -> . *U _setup 2 `ui -> -> 1 `i `ui -> -> 0 `i `ui `i `a ]
+"276
+[; ;../m-stack/usb/src/usb_cdc.c: 276:   _Bool rts = (setup->wValue & 0x2) != 0;
+[v _rts `a ~T0 @X0 1 a ]
+[e = _rts -> -> != & -> . *U _setup 2 `ui -> -> 2 `i `ui -> -> 0 `i `ui `i `a ]
+"278
+[; ;../m-stack/usb/src/usb_cdc.c: 278:   res = app_set_control_line_state_callback(interface, dtr, rts);
+[e = _res ( _app_set_control_line_state_callback (3 , , _interface _dtr _rts ]
+"279
+[; ;../m-stack/usb/src/usb_cdc.c: 279:   if (res < 0)
+[e $ ! < -> _res `i -> 0 `i 49  ]
+"280
+[; ;../m-stack/usb/src/usb_cdc.c: 280:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 49 ]
+"283
+[; ;../m-stack/usb/src/usb_cdc.c: 283:   usb_send_data_stage(((void*)0), 0, ((void*)0), ((void*)0));
+[e ( _usb_send_data_stage (4 , , , -> -> -> 0 `i `*v `*uc -> -> 0 `i `ui -> -> -> 0 `i `*v `*F591 -> -> 0 `i `*v ]
+"285
+[; ;../m-stack/usb/src/usb_cdc.c: 285:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"286
+[; ;../m-stack/usb/src/usb_cdc.c: 286:  }
+}
+[e :U 48 ]
+"290
+[; ;../m-stack/usb/src/usb_cdc.c: 290:  if (setup->bRequest == CDC_SEND_BREAK &&
+[e $ ! && == -> . *U _setup 1 `i -> . `E416 8 `i == -> . . *U _setup 0 1 `i -> 33 `i 50  ]
+"291
+[; ;../m-stack/usb/src/usb_cdc.c: 291:      setup->REQUEST.bmRequestType == 0x21) {
+{
+"292
+[; ;../m-stack/usb/src/usb_cdc.c: 292:   int8_t res;
+[v _res `c ~T0 @X0 1 a ]
+"294
+[; ;../m-stack/usb/src/usb_cdc.c: 294:   res = app_send_break_callback(interface,
+[e = _res ( _app_send_break_callback (2 , _interface . *U _setup 2 ]
+"296
+[; ;../m-stack/usb/src/usb_cdc.c: 296:   if (res < 0)
+[e $ ! < -> _res `i -> 0 `i 51  ]
+"297
+[; ;../m-stack/usb/src/usb_cdc.c: 297:    return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+[e :U 51 ]
+"300
+[; ;../m-stack/usb/src/usb_cdc.c: 300:   usb_send_data_stage(((void*)0), 0, ((void*)0), ((void*)0));
+[e ( _usb_send_data_stage (4 , , , -> -> -> 0 `i `*v `*uc -> -> 0 `i `ui -> -> -> 0 `i `*v `*F595 -> -> 0 `i `*v ]
+"302
+[; ;../m-stack/usb/src/usb_cdc.c: 302:   return 0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 33  ]
+"303
+[; ;../m-stack/usb/src/usb_cdc.c: 303:  }
+}
+[e :U 50 ]
+"306
+[; ;../m-stack/usb/src/usb_cdc.c: 306:  return -1;
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 33  ]
+"307
+[; ;../m-stack/usb/src/usb_cdc.c: 307: }
+[e :UE 33 ]
+}
